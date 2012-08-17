@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.ralapanawa.mobile.android"
+    android:versionCode="3"
+    android:versionName="1.8" >
+
+    <uses-sdk android:minSdkVersion="7" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:icon="@drawable/rala_logo"
+        android:label="@string/app_name"
+        android:theme="@style/CustomTheme" >
+        <uses-library
+            android:name="com.google.android.maps"
+            android:required="true" >
+        </uses-library>
+
+        <activity
+            android:name=".AndroidclientActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".SplashScreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+            <activity android:name="RealtimeMonitor" />
+        	<activity android:name="CheckWaterSupply" />
+        	<activity android:name="CheckWeatherLevel" />
+            <activity android:name="CompareLast5DaysWater" />
+        	<activity android:name="ConfirmWaterSupply" />
+        	<activity android:name="CheckWaterLevel" />
+        	<activity android:name="EnterWaterLevelManualy" />
+        	<activity android:name="FaultReporting" />
+        	<activity android:name="GPSbasedLength" />
+        	<activity android:name="IrrigationCalc" />
+        	<activity android:name="Last5DaysWeather" />
+            <activity android:name="LiveCCtv" />
+            <activity android:name="Login" />
+            <activity android:name="PredictionWaterLevel" />
+         	<activity android:name="ViewMessages" />
+        	<activity android:name="ViewPastRecords" />
+        	
+        <service
+            android:name="org.ralapanawa.mobile.android.SyncService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+
+        <activity
+            android:name="org.ralapanawa.mobile.android.SyncDataListActivity" >
+            
+        </activity>
+        
+        <activity android:name="org.achartengine.GraphicalActivity" />
+    </application>
+
+</manifest>

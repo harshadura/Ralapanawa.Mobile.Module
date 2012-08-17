@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout01"
+    android:layout_width="fill_parent"
+    android:layout_height="65dip" >
+
+    <ImageView
+        android:id="@+id/ImageView01"
+        android:layout_width="40dip"
+        android:layout_height="40dip"
+        android:layout_marginLeft="20dip"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/quoteimage" >
+    </ImageView>
+
+    <TextView
+        android:id="@+id/tvChild"
+        android:layout_width="fill_parent"
+        android:layout_height="65dip"
+        android:gravity="center_vertical"
+        android:paddingTop="10dp"
+        android:shadowColor="#000000"
+        android:shadowDx="0.2"
+        android:shadowRadius="0.1"
+        android:text="Children"
+        android:textColor="#0b4398"
+        android:textSize="20dip" >
+    </TextView>
+
+</LinearLayout>

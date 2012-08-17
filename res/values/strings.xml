@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Ralapanawa Mobile</string>
+	<string name="aboutus">Ralapanawa.Mobile (beta)\n\nAndroid Derivative of the Ralapanawa Centralized Web Service.\n\nApp By: Team Ralapanawa\n\nAndroid Developer:\nHarsha Siriwardena\n\nSystem Architect:\nSajev Lucksman\n\nFor more visit:\nwww.ralapanawa.org</string>
+    <string name="ip">107.21.221.82</string>
+    <!-- Main Menu Buttons -->
+    <string name="check_water_level">Check Water Level</string>
+    <string name="check_weather_level">Check Weather</string>
+    <string name="confirm_water_supply">Check Water Supply</string>
+    <string name="live_cctv">Live CCTV Buffering</string>
+    <string name="enter_water_level">Enter Water Level</string>
+    <string name="realtimemonitor">Realtime Monitor</string>
+    <string name="check_water_supply">Check Water Supply</string>
+    <string name="comming5daysweather">Coming 5days Weather</string>
+    <string name="checkwaterlevel">Check Water Level</string>
+    <string name="comparelast5dayslevels">Compare 5days Levels</string>
+    <string name="prediction">Prediction Water Level</string>
+    <string name="gpsbasedlength">GPS based Length Measure</string>
+    <string name="irricalc">Irrigation Calculations</string>
+    <string name="view_message">View Messages</string>
+    <string name="view_past_recode">View Past Records</string>
+    <string name="logout">Logout</string>
+    <string name="bt_approve">Approve</string>
+    <string name="bt_report">Report</string>
+    <string name="bt_set">Set</string>
+    <string name="bt_exit">Exit</string>
+    <string name="bt_add">Add</string>
+
+    <!-- Enter water level manually -->
+    <string name="enter_water_level_label">Enter water level manually</string>
+    <string name="enter_water_level_name_of_tank">Name Of Tank</string>
+    <string name="enter_water_level_waterlevel">Water level</string>
+    <string name="enter_water_level_time">Time</string>
+
+    <!-- CCTV CAMERA LIVE STREAM -->
+    <string name="cctv_camera_live_stream_label">CCTV Camera Live Stream</string>
+    <string name="cctv_camera_live_stream_streaming">Streaming</string>
+    <string name="cctv_camera_live_stream_caputrebutton">Capture And Send</string>
+    <string name="cctv_camera_live_stream_sound_off">Mute</string>
+
+    <!-- Default Buttons -->
+    <string name="cancel">Cancel</string>
+    <string name="update">Update</string>
+    <string name="save">Save</string>
+    <string name="login_username">Username</string>
+    <string name="login_password">Password</string>
+    <string name="login_bt_cancel">Cancel</string>
+    <string name="login_bt_login">Login</string>
+
+    <!-- Confirm WaterSupply -->
+
+    <string name="confirm_water_supply_label">Confirm water supply</string>
+    <string name="confirm_water_supply_issue_id">Water Issue ID</string>
+    <string name="confirm_water_supply_empid">Emp Id</string>
+    <string name="confirm_water_supply_remark">Remarks</string>
+
+    <!-- Fault Report -->
+    <string name="fault_reporting_supply_label">Fault Reporting</string>
+    <string name="fault_reporting_supply_title">Fault Title</string>
+    <string name="fault_reporting_supply_tank_name">Tank Name</string>
+    <string name="fault_reporting_supply_empid">Emp ID</string>
+    <string name="fault_reporting_supply_description">Description</string>
+
+    <!-- GPS Base Mesure Messument -->
+    <string name="gps_base_length_measurement_label">GPS Based Length Measurement</string>
+    <string name="gps_base_length_measurement_start_codinate">Start Codinate</string>
+    <string name="gps_base_length_measurement_end_codinate">End Codinate</string>
+    <string name="gps_base_length_measurement_distance_in_meter">Distance In M </string>
+    <string name="gps_base_length_measurement_distance_in_pl">Distance In PL </string>
+    <string name="gps_base_length_measurement_bt_calculate">Calculate</string>
+    <string name="gps_base_length_measurement_bt_new">New</string>
+    <string name="gps_base_length_measurement_bt_mark">Mark</string>
+    <string name="gps_base_length_measurement_title_mark_position">Mark Positions</string>
+    <string name="gps_base_length_measurement_survey_title">Survey Title</string>
+
+    <!-- Sync with Remote database -->
+    <string name="sync_with_remort_db_title">Sync with the Remort Database</string>
+    <string name="sync_with_remort_db_warrning">Warrning! Until complete the transferring process please do not close the application</string>
+    <string name="sync_with_remort_db_bt_synce">Sync</string>
+
+    <!-- Real Time Monitorning -->
+    <string name="real_time_monitoring">Real Time Monitoring</string>
+    <string name="real_time_monitoring_enter_tank_id">Enter the tank ID</string>
+    <string name="real_time_monitoring_tank_id">Tank ID</string>
+    <string name="real_time_monitoring_realtime_water_level">Real Time Water Level</string>
+    <string name="real_time_monitoring_last_update">Last Update</string>
+
+    <!-- Enter Tank Wate Level -->
+    <string name="enter_tank_water_level_title">Enter Tank Water Levels</string>
+    <string name="enter_tank_water_level_tank_id">Tank ID</string>
+    <string name="enter_tank_water_level_emp_id">Emp ID</string>
+    <string name="enter_tank_water_level_depth">Depth</string>
+    <string name="enter_tank_water_level_sluiceop_lb">Sluiceop LB</string>
+    <string name="enter_tank_water_level_sluiceop_rb">Sluiceop RB</string>
+    <string name="enter_tank_water_level_remarks">Remarks</string>
+    <string name="enter_tank_water_level">Enter Tank Water Levels</string>
+    <string name="check_water_level_tank_id">Tank ID</string>
+    <string name="load">Load</string>
+
+    <!-- Check Water Level -->
+    <string name="check_waether_level_title">Check weather Levels</string>
+    <string name="check_waether_level_date">Date : </string>
+    <string name="check_waether_level_maxtmp">Max : </string>
+    <string name="check_waether_level_mintmp">Min : </string>
+    <string name="gps_base_length_survay_distance_m">"Distance In 'M' "</string>
+    <string name="gps_base_length_survay_distance_ft">Distance in \'ft\'</string>
+    <string name="gps_base_length_survay_distance_title">"GPS Survay "</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_sync_data_list">SyncDataListActivity</string>
+    <string name="data_sync_title">Offline Sync</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+
+</resources>

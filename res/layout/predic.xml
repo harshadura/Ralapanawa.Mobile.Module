@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/Title_Bar"
+        android:paddingBottom="10dp"
+        android:text="Prediction Water Level"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/Blue" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="2dp" >
+
+        <TextView
+            android:id="@+id/login_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tank Id"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/Blue" />
+
+        <EditText
+            android:id="@+id/etTankId"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="5dp"
+            android:background="#262626"
+            android:height="35dp"
+            android:inputType="text"
+            android:padding="2dp"
+            android:text="IRT001"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp" >
+
+            <requestFocus />
+        </EditText>
+
+        <RelativeLayout
+            android:id="@+id/buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:paddingLeft="15dp" >
+
+            <Button
+                android:id="@+id/btLoad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_weight="2.32"
+                android:background="@drawable/custom_details_button_rs"
+                android:padding="15sp"
+                android:text="Load"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:textColor="#F7F7F7" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/preditcList"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
+
+</LinearLayout>

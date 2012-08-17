@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/svCont"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/TextView02"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/Title_Bar"
+            android:paddingBottom="10dp"
+            android:text="@string/gps_base_length_survay_distance_title"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/Blue" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="2dp" >
+
+            <LinearLayout
+                android:id="@+id/lb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/TextView02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gps_base_length_measurement_start_codinate"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/Blue" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/etSLati"
+                android:layout_width="268dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="5dp"
+                android:background="#262626"
+                android:ems="10"
+                android:height="35dp"
+                android:padding="2dp"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/etSAti"
+                android:layout_width="269dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="5dp"
+                android:background="#262626"
+                android:ems="10"
+                android:height="35dp"
+                android:padding="2dp"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp" >
+
+                <requestFocus />
+            </EditText>
+
+            <Button
+                android:id="@+id/btStart"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_details_button_rs"
+                android:text="Set" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="2dp" >
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gps_base_length_measurement_end_codinate"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/Blue" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="2dp" >
+
+                <EditText
+                    android:id="@+id/etELati"
+                    android:layout_width="266dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4sp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#262626"
+                    android:ems="10"
+                    android:height="35dp"
+                    android:padding="2dp"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp" />
+
+                <EditText
+                    android:id="@+id/etEAti"
+                    android:layout_width="266dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4sp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#262626"
+                    android:ems="10"
+                    android:height="35dp"
+                    android:padding="2dp"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btEnd"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_details_button_rs"
+                android:text="Set" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="2dp" >
+
+            <TextView
+                android:id="@+id/TextView04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gps_base_length_survay_distance_m"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/Blue" />
+
+            <TextView
+                android:id="@+id/tvDisM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Large Text"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/l1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/TextView03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gps_base_length_survay_distance_ft"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/Blue" />
+
+            <TextView
+                android:id="@+id/tvDisft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Large Text"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/button_panel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp" >
+
+            <Button
+                android:id="@+id/btCalc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/custom_details_button_rs"
+                android:padding="20sp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="@string/gps_base_length_measurement_bt_calculate"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:textColor="#F7F7F7" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>
