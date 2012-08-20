@@ -106,7 +106,7 @@ public class SyncDataListActivity extends Activity {
 			 * 
 			 * } });
 			 **/
-		} else {
+		} else if(rest_VALUES==null || rest_VALUES.getMaps()==null || rest_VALUES.getMaps().empty()){
 			AlertDialog alertDialog = new AlertDialog.Builder(
 					SyncDataListActivity.this).create();
 
