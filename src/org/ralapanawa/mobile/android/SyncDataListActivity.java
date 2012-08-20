@@ -16,6 +16,9 @@ import org.ralapanawa.mobile.res.SyncExpandAdapter;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -103,9 +106,23 @@ public class SyncDataListActivity extends Activity {
 			 * 
 			 * } });
 			 **/
-		}
-		else{
-			Toast.makeText(getApplicationContext(),	"No Data waiting to be Synced", Toast.LENGTH_LONG).show();
+		} else {
+			AlertDialog alertDialog = new AlertDialog.Builder(
+					SyncDataListActivity.this).create();
+
+			alertDialog.setTitle("Ralapanawa");
+			alertDialog.setMessage("No Data waiting to be Synced");
+
+			alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+
+					Intent intent = new Intent(SyncDataListActivity.this,
+							AndroidclientActivity.class);
+					
+					SyncDataListActivity.this.startActivity(intent);
+				}
+			});
+			alertDialog.show();
 		}
 
 	}
