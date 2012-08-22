@@ -15,31 +15,7 @@
         android:textColor="@color/Aqua"
         android:textSize="16dp" />
 
-    <RelativeLayout
-        android:id="@+id/RelativeLayout1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:orientation="horizontal"
-        android:padding="5sp" >
-
-        <TextView
-            android:id="@+id/TextView08"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:text="Temp"
-            android:textSize="16dp" />
-
-        <TextView
-            android:id="@+id/tvtemp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:text="Large Text" />
-    </RelativeLayout>
+   
 
     <RelativeLayout
         android:id="@+id/RelativeLayout1"
@@ -55,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:text="Weather_desc" />
+            android:text="Status" />
 
         <TextView
             android:id="@+id/tvwdesc"
@@ -67,6 +43,32 @@
             android:text="Large Text" />
     </RelativeLayout>
 
+         <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:orientation="horizontal"
+        android:padding="5sp" >
+
+        <TextView
+            android:id="@+id/TextView08"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="Temperature - C"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/tvtemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="Large Text" />
+    </RelativeLayout>
+    
     <RelativeLayout
         android:id="@+id/RelativeLayout01"
         android:layout_width="fill_parent"
@@ -81,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:text="WindSpeed" />
+            android:text="WindSpeed - Kmph" />
 
         <TextView
             android:id="@+id/tvWindSp"

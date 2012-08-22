@@ -27,6 +27,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,6 +62,14 @@ public class CheckWeatherLevel extends Activity {
 	private int progressBarStatus = 0;
 	private Handler progressBarHandler = new Handler();
 
+	private static final String SOAP_ACTION2 = "urn:Ralamobile#get_gps";
+	private static final String METHOD_NAME2 = "get_gps";
+	private static final String NAMESPACE2 = "urn:Ralamobile";
+
+	private static final String URL2 = " http://"
+			+ ProjectSettingsHandler.getIp()
+			+ "/Ralapanawa_SOAP/Ralapanawalogin.php";
+	
 	private static final String SOAP_ACTION = "urn:Ralamobile2#Weathmoni";
 	private static final String METHOD_NAME = "Weathmoni";
 	private static final String NAMESPACE = "urn:Ralamobile";
@@ -68,11 +77,15 @@ public class CheckWeatherLevel extends Activity {
 	private static final String URL = " http://" + ProjectSettingsHandler.getIp()
 			+ "/Ralapanawa_SOAP/weatherwebservice.php";
 
+	private EditText etTankId;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.check_weather);
-
+		
+		etTankId = (EditText) findViewById(R.id.etTankId);
+		
 		observation_time = (TextView) findViewById(R.id.observation_time);
 		temp_C = (TextView) findViewById(R.id.temp_C);
 		temp_F = (TextView) findViewById(R.id.temp_F);
@@ -210,15 +223,18 @@ public class CheckWeatherLevel extends Activity {
 			progressBar.setMax(100);
 			progressBar.show();
 			progressBarStatus = 0;
-			
-			init_gps();
-			
+				
 			new Thread(new Runnable() {
 				public void run() {
 					while (progressBarStatus < 100) {
 
 						try {
 							Thread.sleep(1000);
+							
+							String[] latLang = getGPS(etTankId.getText().toString());
+							lat = latLang[0];
+							longat = latLang[1];
+							
 							Log.v("TAG", lat + " " + longat);
 							getWeatherFromSOAPService(lat, longat);
 							finishedProcess = true;
@@ -294,4 +310,40 @@ public class CheckWeatherLevel extends Activity {
 		}
 	};
 
+	public String[] getGPS(String tankid) {
+		SoapObject request = new SoapObject(NAMESPACE2, METHOD_NAME2);
+		request.addProperty("tankid", tankid);
+
+		SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
+				SoapEnvelope.VER11);
+		envelope.dotNet = true;
+		envelope.setOutputSoapObject(request);
+		HttpTransportSE androidHttpTransport = new HttpTransportSE(URL2);
+		try {
+			androidHttpTransport.call(SOAP_ACTION2, envelope);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		SoapObject result;
+		result = (SoapObject) envelope.bodyIn;
+
+		// if (result == null)
+
+		try {
+			if (result != null) {
+				String encodedImage = result.getProperty(0).toString();
+				SoapObject garphOb = (SoapObject) result.getProperty(0);
+				Log.v("TAG", encodedImage);
+
+				return new String[] { "" + garphOb.getProperty("lat"),
+						"" + garphOb.getProperty("long") };
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+
+		return null;
+	}
 }

@@ -15,7 +15,11 @@ import org.ralapanawa.mobile.res.CompareWeatherList;
 import org.ralapanawa.mobile.res.WetherData;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +27,12 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 public class Last5DaysWeather extends Activity {
+	private boolean finishedProcess = false;
+	private ProgressDialog progressBar;
+	private int progressBarStatus = 0;
+	private Handler progressBarHandler = new Handler();
+	private SoapObject result = null;
+	private List<WetherData> compareWeatherList;
 
 	private static final String SOAP_ACTION = "urn:Ralamobile#get_gps";
 	private static final String METHOD_NAME = "get_gps";
@@ -40,28 +50,81 @@ public class Last5DaysWeather extends Activity {
 			+ "/Ralapanawa_SOAP/Ralapanawalogin.php";
 
 	private ListView listView;
-
+	private EditText etTankId;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.compare_weather);
 
+		etTankId = (EditText) findViewById(R.id.tankid);
 		Button button = (Button) findViewById(R.id.btApprove);
 		listView = (ListView) findViewById(R.id.listView1);
 
 		final List<WetherData> wdDatas = new ArrayList<WetherData>();
 
-		button.setOnClickListener(new View.OnClickListener() {
-
-			public void onClick(View v) {
-
-				listView.setAdapter(new CompareWeatherList(
-						getWetherDatas("IRT001"), Last5DaysWeather.this));
-			}
-		});
-
+		button.setOnClickListener(buttonSaveOnClickListener);
+		
 	}
 
+	Button.OnClickListener buttonSaveOnClickListener = new Button.OnClickListener() {
+		public void onClick(View v) {
+			progressBar = new ProgressDialog(v.getContext());
+			progressBar.setCancelable(true);
+			progressBar.setMessage("Retrieving data from Rala Web service...");
+			progressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+			progressBar.setProgress(0);
+			progressBar.setMax(100);
+			progressBar.show();
+			progressBarStatus = 0;
+			
+			new Thread(new Runnable() {
+				public void run() {
+					while (progressBarStatus < 100) {
+
+						try {
+							Thread.sleep(1000);
+							compareWeatherList = getWetherDatas(etTankId.getText().toString());
+							finishedProcess = true;
+							
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						progressBarHandler.post(new Runnable() {
+							public void run() {
+								progressBar.setProgress(progressBarStatus);
+							}
+						});
+					}
+					if (progressBarStatus >= 100) {
+						
+						try {
+							Thread.sleep(2000);
+							
+							// UI running Thread !!
+							runOnUiThread(new Runnable() {
+							     public void run() {
+							    		if(finishedProcess == true){
+							    			try {
+							    				listView.setAdapter(new CompareWeatherList(compareWeatherList, Last5DaysWeather.this));
+							    			} catch (Exception e) {
+							    				e.printStackTrace();
+							    			}
+											finishedProcess = false;
+										}
+							    }
+							});	
+							
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						progressBar.dismiss();
+					}
+				}
+			}).start();
+		}
+	};
+	
 	public List<WetherData> getWetherDatas(String tankid) {
 
 		List<WetherData> datas = new ArrayList<WetherData>();
@@ -73,8 +136,9 @@ public class Last5DaysWeather extends Activity {
 			connectSOAP2.setObTime(calendar.getTime().toString());
 			datas.add(connectSOAP2);
 		}
-
+		progressBarStatus = progressBarStatus + 100;
 		return datas;
+		
 	}
 
 	public WetherData connectSOAP2(String ddi, String latti, String longt) {

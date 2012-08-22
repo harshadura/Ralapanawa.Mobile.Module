@@ -20,6 +20,33 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/Blue" />
 
+         <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="2dp" >
+
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/check_water_level_tank_id"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/Blue" />
+
+        <EditText
+            android:id="@+id/etTankId"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="5dp"
+            android:background="#262626"
+            android:height="35dp"
+            android:text="IRT001"
+            android:padding="2dp"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp" />
+    </LinearLayout>
          <RelativeLayout
             android:id="@+id/button_panel"
             android:layout_width="fill_parent"

@@ -4,6 +4,16 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
+      <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/Title_Bar"
+        android:paddingBottom="10dp"
+        android:text="Comming 5 days Weather"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/Blue" />
+      
     <LinearLayout
         android:id="@+id/tc"
         android:layout_width="fill_parent"
@@ -20,12 +30,12 @@
             android:id="@+id/TextView02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/confirm_water_supply_issue_id"
+            android:text="Tank ID"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/Blue" />
 
         <EditText
-            android:id="@+id/etWaterIssuId"
+            android:id="@+id/tankid"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
@@ -34,30 +44,37 @@
             android:height="35dp"
             android:padding="2dp"
             android:textColor="#FFFFFF"
-            android:textSize="20dp" >
+            android:textSize="20dp"
+            android:text="IRT001" >
 
             <requestFocus />
         </EditText>
     </LinearLayout>
 
-    <RelativeLayout
-        android:id="@+id/btLayer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+     <RelativeLayout
+        android:id="@+id/button_panel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp" >
 
         <Button
             android:id="@+id/btApprove"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:background="@drawable/custom_details_button_rs"
             android:padding="20sp"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
-            android:text="Load"
+            android:text="@string/load"
             android:textAppearance="@android:style/TextAppearance.Large"
             android:textColor="#F7F7F7" />
-    </RelativeLayout>
 
+    </RelativeLayout>
+        
     <ListView
         android:id="@+id/listView1"
         android:layout_width="fill_parent"
