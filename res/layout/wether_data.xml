@@ -67,6 +67,32 @@
             android:text="Large Text" />
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/RelativeLayout01"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:orientation="horizontal"
+        android:padding="5sp" >
+
+        <TextView
+            android:id="@+id/TextView02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="WindSpeed" />
+
+        <TextView
+            android:id="@+id/tvWindSp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/TextView02"
+            android:layout_alignBottom="@+id/TextView02"
+            android:layout_alignParentRight="true"
+            android:text="Large Text" />
+    </RelativeLayout>
+
     <ImageView
         android:id="@+id/imW"
         android:layout_width="100dp"

@@ -1,6 +1,7 @@
 package org.ralapanawa.mobile.android;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -65,9 +66,12 @@ public class Last5DaysWeather extends Activity {
 
 		List<WetherData> datas = new ArrayList<WetherData>();
 		String[] latLang = connectSOAP(tankid);
-
+		Calendar calendar = Calendar.getInstance();
 		for (int i = 0; i < 5; i++) {
-			datas.add(connectSOAP2("1", latLang[0], latLang[1]));
+			WetherData connectSOAP2 = connectSOAP2(""+(i+1), latLang[0], latLang[1]);
+			calendar.add(Calendar.DATE, i);
+			connectSOAP2.setObTime(calendar.getTime().toString());
+			datas.add(connectSOAP2);
 		}
 
 		return datas;
@@ -108,6 +112,8 @@ public class Last5DaysWeather extends Activity {
 				data.setImageLoc(garphOb.getProperty("weatherIconUrl")+"");
 				data.setTemp(garphOb.getProperty("temp_C")+"");
 				data.setWetherDesc(garphOb.getProperty("weatherDesc")+"");
+				data.setWindSpeed(garphOb.getProperty("windspeedKmph")+"");
+				
 				
 
 				

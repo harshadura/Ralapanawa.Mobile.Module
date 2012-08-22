@@ -62,8 +62,9 @@ public class CompareWeatherList extends BaseAdapter {
 			holder = new ViewHolder();
 			
 			holder.temp_C=(TextView) convertView.findViewById(R.id.tvtemp);
-			holder.weatherDesc=(TextView) convertView.findViewById(R.id.tvtemp);
+			holder.weatherDesc=(TextView) convertView.findViewById(R.id.tvwdesc);
 			holder.title=(TextView) convertView.findViewById(R.id.title);
+			holder.windspeedKmph=(TextView) convertView.findViewById(R.id.tvWindSp);
 			holder.imIcon=(ImageView) convertView.findViewById(R.id.imW);
 			
 
@@ -77,6 +78,8 @@ public class CompareWeatherList extends BaseAdapter {
 
 		holder.temp_C.setText(wetherData.getTemp());
 		holder.title.setText(wetherData.getObTime());
+		holder.weatherDesc.setText(wetherData.getWetherDesc());
+		holder.windspeedKmph.setText(wetherData.getWindSpeed());
 		holder.imIcon.setImageDrawable(LoadImageFromWeb(wetherData.getImageLoc()));
 
 		Log.i("TAG", wetherData + "");
