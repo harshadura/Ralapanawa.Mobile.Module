@@ -40,10 +40,8 @@ public class SyncDataListActivity extends Activity {
 		try {
 			rest_VALUES = ObjectSaver.readObject(SyncDataListActivity.this);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
