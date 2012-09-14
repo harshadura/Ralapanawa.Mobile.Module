@@ -119,9 +119,9 @@
             <TableLayout
                 android:id="@+id/tb"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent" >
+                android:layout_height="fill_parent" 
+                android:stretchColumns="*" android:background="#000000" >
 
-                
             </TableLayout>
 
         </ScrollView>

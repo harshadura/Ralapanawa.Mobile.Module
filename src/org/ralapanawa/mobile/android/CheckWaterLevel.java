@@ -45,7 +45,12 @@ public class CheckWaterLevel extends Activity {
 	private DatePicker dpTo;
 	private EditText etTankId;
 	private Button btLoad;
-
+	
+	private String dateFromMonth = "";
+	private String dateFromDay = "";
+	private String dateToMonth = "";
+	private String dateToDay = "";
+	
 	private List<WeatherData> weatherDatas;
 
 	@Override
@@ -61,13 +66,38 @@ public class CheckWaterLevel extends Activity {
 		weatherDatas = new ArrayList<WeatherData>();
 
 		btLoad.setOnClickListener(new View.OnClickListener() {
-
 			public void onClick(View arg0) {
-				String from = dpFrom.getYear() + "-" + dpFrom.getMonth() + "-"
-						+ dpFrom.getDayOfMonth();
 
-				String to = dpTo.getYear() + "-" + dpTo.getMonth() + "-"
-						+ dpTo.getDayOfMonth();
+				if (dpFrom.getMonth() < 10 ){
+					dateFromMonth = "0" + (dpFrom.getMonth()+1);
+				}else{
+					dateFromMonth = String.valueOf(dpFrom.getMonth()+1);
+				}
+				
+				if (dpFrom.getDayOfMonth() < 10 ){
+					dateFromDay = "0" + dpFrom.getDayOfMonth();
+				}else{
+					dateFromDay = String.valueOf(dpFrom.getDayOfMonth());
+				}
+				
+				if (dpTo.getMonth() < 10 ){
+					dateToMonth = "0" +  (dpTo.getMonth()+1);
+				}else{
+					dateToMonth = String.valueOf(dpTo.getMonth()+1);
+				}
+				
+				if (dpTo.getDayOfMonth() < 10 ){
+					dateToDay = "0" + dpTo.getDayOfMonth();
+				}else{
+					dateToDay =  String.valueOf(dpTo.getDayOfMonth());
+				}
+				
+				
+				String from = dpFrom.getYear() + "-" + dateFromMonth + "-"
+						+ dateFromDay;
+
+				String to = dpTo.getYear() + "-" + dateToMonth + "-"
+						+ dateToDay;
 
 				Log.i("TAG", from + " " + to);
 
@@ -78,10 +108,13 @@ public class CheckWaterLevel extends Activity {
 	}
 
 	public void connectSOAP(String date1, String date2, String tankid) {
+		
+
+		
 		SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
-		request.addProperty("date1", "2012-07-21");
-		request.addProperty("date2", "2012-07-25");
-		request.addProperty("tankid", "IRT001");
+		request.addProperty("date1", date1); // "2012-07-21"
+		request.addProperty("date2", date2); // "2012-07-25"
+		request.addProperty("tankid", tankid); // "IRT001"
 
 		// Log.i("TAG", date1+" "+date2);
 
