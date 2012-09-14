@@ -14,8 +14,11 @@ import org.ralapanawa.mobile.helpers.ProjectSettingsHandler;
 import org.ralapanawa.mobile.res.WeatherData;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +32,11 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 public class CheckWaterLevel extends Activity {
+
+	private boolean finishedProcess = false;
+	private ProgressDialog progressBar;
+	private int progressBarStatus = 0;
+	private Handler progressBarHandler = new Handler();
 
 	private static final String SOAP_ACTION = "urn:Ralamobile#viewwlevel";
 	private static final String METHOD_NAME = "viewwlevel";
@@ -51,6 +59,9 @@ public class CheckWaterLevel extends Activity {
 	private String dateToMonth = "";
 	private String dateToDay = "";
 	
+	private String from = "";
+	private String to = "";
+	
 	private List<WeatherData> weatherDatas;
 
 	@Override
@@ -68,52 +79,11 @@ public class CheckWaterLevel extends Activity {
 		dpFrom.init(2012, 6, 21, null);
 		dpTo.init(2012, 6, 25, null);
 		
-		btLoad.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View arg0) {
-
-				if (dpFrom.getMonth() < 10 ){
-					dateFromMonth = "0" + (dpFrom.getMonth()+1);
-				}else{
-					dateFromMonth = String.valueOf(dpFrom.getMonth()+1);
-				}
-				
-				if (dpFrom.getDayOfMonth() < 10 ){
-					dateFromDay = "0" + dpFrom.getDayOfMonth();
-				}else{
-					dateFromDay = String.valueOf(dpFrom.getDayOfMonth());
-				}
-				
-				if (dpTo.getMonth() < 10 ){
-					dateToMonth = "0" +  (dpTo.getMonth()+1);
-				}else{
-					dateToMonth = String.valueOf(dpTo.getMonth()+1);
-				}
-				
-				if (dpTo.getDayOfMonth() < 10 ){
-					dateToDay = "0" + dpTo.getDayOfMonth();
-				}else{
-					dateToDay =  String.valueOf(dpTo.getDayOfMonth());
-				}
-				
-				
-				String from = dpFrom.getYear() + "-" + dateFromMonth + "-"
-						+ dateFromDay;
-
-				String to = dpTo.getYear() + "-" + dateToMonth + "-"
-						+ dateToDay;
-
-				Log.i("TAG", from + " " + to);
-
-				connectSOAP(from, to, etTankId.getText().toString());
-			}
-		});
+		btLoad.setOnClickListener(buttonSaveOnClickListener);
 
 	}
 
 	public void connectSOAP(String date1, String date2, String tankid) {
-		
-
-		
 		SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
 		request.addProperty("date1", date1); // "2012-07-21"
 		request.addProperty("date2", date2); // "2012-07-25"
@@ -185,10 +155,14 @@ public class CheckWaterLevel extends Activity {
 
 		}
 		
+		progressBarStatus = progressBarStatus + 100;
 		
+	}
+	
+	public void setTheGridData(){
 		TableRow.LayoutParams params = new TableRow.LayoutParams(100, 100);
         TableLayout table = (TableLayout) findViewById(R.id.tb);
-        String array[] = new String[] { "EidD", "DT", "Dep",
+        String array[] = new String[] { "EID", "DT", "Dep",
 				"SLB", "SRB", "Re" };
         TableRow headerrow = new TableRow(this);
         for (int j = 0; j < array.length; j++) {
@@ -216,7 +190,94 @@ public class CheckWaterLevel extends Activity {
             }
             table.addView(row);
         }
-
 	}
+	
+	Button.OnClickListener buttonSaveOnClickListener = new Button.OnClickListener() {
+		public void onClick(View v) {
+			
+			if (dpFrom.getMonth() < 10 ){
+				dateFromMonth = "0" + (dpFrom.getMonth()+1);
+			}else{
+				dateFromMonth = String.valueOf(dpFrom.getMonth()+1);
+			}
+			
+			if (dpFrom.getDayOfMonth() < 10 ){
+				dateFromDay = "0" + dpFrom.getDayOfMonth();
+			}else{
+				dateFromDay = String.valueOf(dpFrom.getDayOfMonth());
+			}
+			
+			if (dpTo.getMonth() < 10 ){
+				dateToMonth = "0" +  (dpTo.getMonth()+1);
+			}else{
+				dateToMonth = String.valueOf(dpTo.getMonth()+1);
+			}
+			
+			if (dpTo.getDayOfMonth() < 10 ){
+				dateToDay = "0" + dpTo.getDayOfMonth();
+			}else{
+				dateToDay =  String.valueOf(dpTo.getDayOfMonth());
+			}
+			
+			
+		 from = dpFrom.getYear() + "-" + dateFromMonth + "-"
+					+ dateFromDay;
+
+		 to = dpTo.getYear() + "-" + dateToMonth + "-"
+					+ dateToDay;
+
+			Log.i("TAG", from + " " + to);
+
+			
+			progressBar = new ProgressDialog(v.getContext());
+			progressBar.setCancelable(true);
+			progressBar.setMessage("Retrieving bulk-data from Rala Web service...");
+			progressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+			progressBar.setProgress(0);
+			progressBar.setMax(100);
+			progressBar.show();
+			progressBarStatus = 0;
+				
+			new Thread(new Runnable() {
+				public void run() {
+					while (progressBarStatus < 100) {
+
+						try {
+							Thread.sleep(1000);
+							connectSOAP(from, to, etTankId.getText().toString());
+							finishedProcess = true;
+							
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						progressBarHandler.post(new Runnable() {
+							public void run() {
+								progressBar.setProgress(progressBarStatus);
+							}
+						});
+					}
+					if (progressBarStatus >= 100) {
+						
+						try {
+							Thread.sleep(2000);
+							
+							// UI running Thread !!
+							runOnUiThread(new Runnable() {
+							     public void run() {
+							    		if(finishedProcess == true){
+							    			setTheGridData();
+										}
+							    }
+							});	
+							
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						progressBar.dismiss();
+					}
+				}
+			}).start();
+		}
+	};
 
 }
