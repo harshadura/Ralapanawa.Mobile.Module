@@ -3,7 +3,7 @@
 
     <string name="app_name">Ralapanawa Mobile</string>
 	<string name="aboutus">Ralapanawa.Mobile (beta)\n\nAndroid Derivative of the Ralapanawa Centralized Web Service.\n\nApp By: Team Ralapanawa\n\nAndroid Developer:\nHarsha Siriwardena\n\nSystem Architect:\nSajev Lucksman\n\nFor more visit:\nwww.ralapanawa.org</string>
-    <string name="ip">107.21.221.82</string>
+    <string name="ip">23.23.184.197</string>
     <!-- Main Menu Buttons -->
     <string name="check_water_level">Check Water Level</string>
     <string name="check_weather_level">Check Weather</string>
