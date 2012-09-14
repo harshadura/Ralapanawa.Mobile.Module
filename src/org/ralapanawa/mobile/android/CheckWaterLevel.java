@@ -65,6 +65,9 @@ public class CheckWaterLevel extends Activity {
 
 		weatherDatas = new ArrayList<WeatherData>();
 
+		dpFrom.init(2012, 6, 21, null);
+		dpTo.init(2012, 6, 25, null);
+		
 		btLoad.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View arg0) {
 

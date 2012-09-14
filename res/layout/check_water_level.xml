@@ -109,8 +109,23 @@
                 android:text="Load"
                 android:textAppearance="@android:style/TextAppearance.Large"
                 android:textColor="#F7F7F7" />
-        </RelativeLayout>
+       </RelativeLayout>
+   
+     <LinearLayout     
+         	android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="2dp" >
 
+            <TextView
+                android:id="@+id/TextView03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/Blue" />
+     </LinearLayout>   
+           
         <ScrollView
             android:id="@+id/svtb"
             android:layout_width="fill_parent"
