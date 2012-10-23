@@ -1,12 +1,16 @@
----------------------------------------
+-------------------------------------------------
 	Ralapanawa.Mobile.Module - README
----------------------------------------
+-------------------------------------------------
 
-@Google Play Market
+Android Derivative of the Ralapanawa Centralized Web Service
+
+Released Under: MIT License 2012 Harsha Siriwardena
+
+@authors: harshadura, dewmal
+
+Download App from Google Play Market:
 https://play.google.com/store/apps/details?id=org.ralapanawa.mobile.android
 
-@Blog
+For more info visit project blog:
 http://www.ralapanawa.org/
 
-@Source Repo (pvt-repo)
-https://bitbucket.org/harshadura/ralaandroidrepo
